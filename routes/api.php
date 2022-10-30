@@ -17,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace' => 'Company', 'prefix' => 'company'], function () {
+      Route::post('/', [App\Http\Controllers\Company\CreateController::class, 'store']);
+//    Route::get('/', [\App\Http\Controllers\Student\StudentController::class, 'index']);
+//    Route::patch('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'update']);
+//    Route::delete('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'destroy']);
+});
+
+Route::group(['namespace' => 'Employee', 'prefix' => 'employee'], function () {
+    Route::post('/', [App\Http\Controllers\Employee\CreateController::class, 'store']);
+    Route::get('/', [App\Http\Controllers\Employee\CreateController::class, 'get_company']);
+//    Route::get('/', [\App\Http\Controllers\Student\StudentController::class, 'index']);
+//    Route::patch('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'update']);
+//    Route::delete('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'destroy']);
+});
