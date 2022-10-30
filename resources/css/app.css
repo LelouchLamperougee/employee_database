@@ -1,0 +1,12 @@
+.wrapper input{
+    max-width: 16em;
+
+}
+
+.wrapper button{
+    max-width: 8em;
+}
+
+.wrapper select{
+    max-width: 13em;
+}
