@@ -23,7 +23,7 @@
                     </button>
                 </a></td>
                 <td class="text-center"><a href="#">
-                    <button class="btn btn-danger">delete</button>
+                    <button @click.prevent="destroy(company.id)" class="btn btn-danger">delete</button>
                 </a></td>
             </tr>
 
@@ -38,7 +38,7 @@
                 </a></td>
 
                 <td><a href="#">
-                    <button class="btn btn-danger">cancel</button>
+                    <button @click.prevent="cancel" class="btn btn-danger">cancel</button>
                 </a></td>
             </tr>
         </template>
@@ -79,12 +79,12 @@ export default {
                 })
         },
 
-        updateCompany(id){
-          axios.patch(`/api/company/${id}`, {name: this.name, budget: this.budget, ceo: this.ceo})
-              .then(response =>{
-                  this.getCompanies()
-                  console.log(response.data);
-              })
+        updateCompany(id) {
+            axios.patch(`/api/company/${id}`, {name: this.name, budget: this.budget, ceo: this.ceo})
+                .then(response => {
+                    this.getCompanies()
+                    console.log(response.data);
+                })
             this.editCompanyId = null
         },
 
@@ -97,8 +97,21 @@ export default {
 
         isEdit(id) {
             return this.editCompanyId === id
-        }
+        },
 
+        destroy(id){
+            console.log('info');
+            console.log(this.name, this.budget, this.ceo);
+            axios.delete(`/api/company/${id}`)
+                .then(response =>{
+                    console.log(response.data);
+                    this.getCompanies()
+                })
+        },
+
+        cancel(){
+            this.editCompanyId = null
+        }
     }
 }
 </script>

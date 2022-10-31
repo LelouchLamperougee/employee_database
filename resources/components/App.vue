@@ -1,10 +1,10 @@
 <template>
 
 
-<!--    <index-company></index-company>-->
+    <index-company></index-company>
     <index-employee></index-employee>
-    <!--    <create-company></create-company>-->
-    <!--    <create-employee></create-employee>-->
+    <create-company></create-company>
+    <create-employee></create-employee>
 
 </template>
 

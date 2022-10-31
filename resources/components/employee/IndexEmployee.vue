@@ -31,7 +31,7 @@
                     <button @click.prevent="changeEditEmployeeId(employee.id, employee.first_name, employee.last_name, employee.date_of_birth, employee.passport, employee.post, employee.work_experience, employee.salary, employee.company_id)" class="btn btn-success">edit</button>
                 </a></td>
                 <td class="text-center"><a href="#">
-                    <button class="btn btn-danger">delete</button>
+                    <button @click.prevent="destroy(employee.id)" class="btn btn-danger">delete</button>
                 </a></td>
             </tr>
 
@@ -142,12 +142,19 @@ export default {
             this.editEmployeeId = null
         },
 
+
         getCompany() {
 
             axios.get('/api/helper')
                 .then(response => {
                     this.companies = response.data
-                    console.log(this.companies);
+                })
+        },
+
+        destroy(id){
+            axios.delete(`/api/employee/${id}`)
+                .then(response=>{
+                    this.getEmployees()
                 })
         }
 

@@ -22,13 +22,15 @@ Route::group(['namespace' => 'Company', 'prefix' => 'company'], function () {
     Route::post('/', [App\Http\Controllers\Company\CreateController::class, 'store']);
     Route::get('/', [\App\Http\Controllers\Company\IndexController::class, 'index']);
     Route::patch('/{company}', [\App\Http\Controllers\Company\UpdateController::class, 'update']);
-
+    Route::delete('/{company}', [\App\Http\Controllers\Company\DestroyController::class, 'destroy']);
 });
 
 Route::group(['namespace' => 'Employee', 'prefix' => 'employee'], function () {
     Route::post('/', [App\Http\Controllers\Employee\CreateController::class, 'store']);
     Route::get('/', [App\Http\Controllers\Employee\IndexController::class, 'index']);
     Route::patch('/{employee}', [\App\Http\Controllers\Employee\UpdateController::class, 'update']);
+    Route::delete('/{employee}', [\App\Http\Controllers\Employee\DestroyController::class, 'destroy']);
+
 });
 
 Route::group(['namespace' => 'HelperController', 'prefix' => 'helper'], function () {
