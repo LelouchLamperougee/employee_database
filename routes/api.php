@@ -20,15 +20,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Company', 'prefix' => 'company'], function () {
       Route::post('/', [App\Http\Controllers\Company\CreateController::class, 'store']);
-//    Route::get('/', [\App\Http\Controllers\Student\StudentController::class, 'index']);
+      Route::get('/', [\App\Http\Controllers\Company\IndexController::class, 'index']);
 //    Route::patch('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'update']);
 //    Route::delete('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'destroy']);
 });
 
 Route::group(['namespace' => 'Employee', 'prefix' => 'employee'], function () {
     Route::post('/', [App\Http\Controllers\Employee\CreateController::class, 'store']);
-    Route::get('/', [App\Http\Controllers\Employee\CreateController::class, 'get_company']);
-//    Route::get('/', [\App\Http\Controllers\Student\StudentController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\Employee\IndexController::class, 'index']);
 //    Route::patch('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'update']);
 //    Route::delete('/{student}', [\App\Http\Controllers\Student\StudentController::class, 'destroy']);
+});
+
+Route::group(['namespace' => 'HelperController', 'prefix' => 'helper'], function () {
+    Route::get('/', [\App\Http\Controllers\HelperController\GetCompanyController::class, 'get_company']);
 });

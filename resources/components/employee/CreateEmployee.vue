@@ -3,7 +3,7 @@
 
         <label for="inputEmail3" class="col-sm-2 col-form-label">First name</label>
         <div class="col-sm-10">
-            <input  v-model="first_name" type="text" class="form-control" id="inputEmail3" placeholder="First name">
+            <input v-model="first_name" type="text" class="form-control" id="inputEmail3" placeholder="First name">
         </div>
 
         <label for="inputEmail3" class="col-sm-2 col-form-label">Last name</label>
@@ -13,7 +13,8 @@
 
         <label for="inputEmail3" class="col-sm-2 col-form-label">Date of birth</label>
         <div class="col-sm-10">
-            <input  v-model="date_of_birth" type="date" class="form-control" id="inputEmail3" placeholder="Date of birth">
+            <input v-model="date_of_birth" type="date" class="form-control" id="inputEmail3"
+                   placeholder="Date of birth">
         </div>
 
         <label for="inputEmail3" class="col-sm-2 col-form-label">passport</label>
@@ -28,7 +29,8 @@
 
         <label for="inputEmail3" class="col-sm-2 col-form-label">Work experience</label>
         <div class="col-sm-10">
-            <input v-model="work_experience" type="email" class="form-control" id="inputEmail3" placeholder="Work experience">
+            <input v-model="work_experience" type="email" class="form-control" id="inputEmail3"
+                   placeholder="Work experience">
         </div>
 
         <label for="inputEmail3" class="col-sm-2 col-form-label">Salary</label>
@@ -45,9 +47,9 @@
         <div class="col-sm-10">
 
             <select v-model="company_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option  v-for="company in companies" :value="company.id">
-                        {{company.name}}
-                    </option>
+                <option v-for="company in companies" :value="company.id">
+                    {{ company.name }}
+                </option>
             </select>
 
         </div>
@@ -68,8 +70,8 @@ export default {
         this.getCompany()
     },
 
-    data(){
-        return{
+    data() {
+        return {
             first_name: "",
             last_name: "",
             date_of_birth: null,
@@ -84,8 +86,8 @@ export default {
         }
     },
 
-    methods:{
-        createEmployee(){
+    methods: {
+        createEmployee() {
             axios.post('/api/employee', {
                 first_name: this.first_name,
                 last_name: this.last_name,
@@ -95,16 +97,29 @@ export default {
                 work_experience: this.work_experience,
                 salary: this.salary,
                 description: this.description,
-                company_id: this.company_id}).then(response =>{
-                console.log(response.data);
+                company_id: this.company_id
             })
-            console.log(this.first_name, this.last_name, this.date_of_birth, this.passport, this.post, this.work_experience, this.salary, this.description, this.company_id);
+                .then(response => {
+                    this.first_name = ""
+                    this.last_name = ""
+                    this.date_of_birth = null
+                    this.passport = null
+                    this.post = ""
+                    this.work_experience = null
+                    this.salary = null
+                    this.description = ""
+                    this.company_id = null
+                    this.$parent.$refs.indexEmployee.getEmployees()
+                })
+
         },
 
-        getCompany(){
-            axios.get('/api/employee')
-                .then(response =>{
+        getCompany() {
+            console.log('working');
+            axios.get('/api/helper')
+                .then(response => {
                     this.companies = response.data
+                    console.log(response.data);
                 })
         }
     }
