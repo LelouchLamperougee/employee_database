@@ -13,11 +13,7 @@ class CreateController extends Controller
 
         $data = $request->validated();
         $employees = Employee::create($data);
-        return $employees;
-    }
 
-    public function get_company(){
-        $companies = Company::all();
-        return $companies;
+        return $employees;
     }
 }
