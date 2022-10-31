@@ -115,7 +115,6 @@ export default {
         },
 
         getCompany() {
-            console.log('working');
             axios.get('/api/helper')
                 .then(response => {
                     this.companies = response.data
