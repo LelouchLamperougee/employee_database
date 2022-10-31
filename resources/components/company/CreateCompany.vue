@@ -43,6 +43,7 @@ export default {
                     this.name = ""
                     this.budget = null
                     this.ceo = ""
+                    this.$parent.$refs.indexCompany.getCompanies()
                 })
         }
     }
