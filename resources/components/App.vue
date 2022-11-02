@@ -1,30 +1,33 @@
 <template>
 
 
-    <index-company></index-company>
-    <index-employee></index-employee>
-    <create-company></create-company>
-    <create-employee></create-employee>
+    <nav class="navbar navbar-dark bg-dark mb-4 p-3">
+            <h1 class="text-white">website</h1>
+        <form class="form-switch">
+            <router-link :to="{name: 'companies.index'}"><button class="btn btn-outline-info" type="button">Companies</button></router-link>
+            <router-link :to="{name: 'employees.index'}"><button class="btn btn-outline-info" type="button">Employees</button></router-link>
+        </form>
+    </nav>
+
+    <router-view></router-view>
+
 
 </template>
 
 <script>
-import CreateCompany from "./company/CreateCompany.vue";
-import CreateEmployee from "./employee/CreateEmployee.vue";
-import IndexEmployee from "./employee/IndexEmployee.vue";
-import IndexCompany from "./company/IndexCompany.vue";
-
 
 export default {
     name: "App",
 
     components: {
-        CreateCompany,
-        CreateEmployee,
-        IndexEmployee,
-        IndexCompany,
+    },
 
-    }
+    data() {
+        return {
+            isSwitch: true
+
+        }
+    },
 }
 </script>
 
