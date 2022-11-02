@@ -1,30 +1,35 @@
 <template>
-    <div class="form-group row wrapper">
+    <div class="wrapper">
+        <div class="form-group row">
 
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
-            <input v-model="name" type="email" class="form-control" id="inputEmail3" placeholder="Name">
-        </div>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input v-model="name" type="email" class="form-control" id="inputEmail3" placeholder="Name">
+            </div>
 
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Budget</label>
-        <div class="col-sm-10">
-            <input v-model="budget" type="email" class="form-control" id="inputEmail3" placeholder="Budget">
-        </div>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Budget</label>
+            <div class="col-sm-10">
+                <input v-model="budget" type="email" class="form-control" id="inputEmail3" placeholder="Budget">
+            </div>
 
-        <label for="inputEmail3" class="col-sm-2 col-form-label">CEO</label>
-        <div class="col-sm-10">
-            <input v-model="ceo" type="email" class="form-control" id="inputEmail3" placeholder="ceo">
-        </div>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">CEO</label>
+            <div class="col-sm-10">
+                <input v-model="ceo" type="email" class="form-control" id="inputEmail3" placeholder="ceo">
+            </div>
 
-        <div>
-            <button @click.prevent="createCompany" class="btn btn-primary" type="submit">create</button>
+            <div>
+                <button @click.prevent="createCompany" class="btn btn-primary" type="submit">create</button>
+            </div>
         </div>
     </div>
+
+
 </template>
 
 <script>
 
 import axios from "axios";
+import router from "../../js/router";
 export default {
     name: "CreateCompany",
 
@@ -43,7 +48,7 @@ export default {
                     this.name = ""
                     this.budget = null
                     this.ceo = ""
-                    this.$parent.$refs.indexCompany.getCompanies()
+                    router.push({name: 'companies.index'})
                 })
         }
     }
