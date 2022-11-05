@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('post');
             $table->integer('work_experience')->nullable();
             $table->unsignedInteger('salary');
-            $table->longText('description');
 
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');

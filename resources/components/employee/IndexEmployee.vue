@@ -65,6 +65,7 @@ export default {
             axios.get('/api/employee')
                 .then(response => {
                     this.employees = response.data
+                    console.log(response);
                 })
         },
 
@@ -81,7 +82,6 @@ export default {
                     this.companies = response.data
                 })
         },
-
 
 
     }

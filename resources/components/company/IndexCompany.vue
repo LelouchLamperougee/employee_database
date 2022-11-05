@@ -54,6 +54,7 @@ export default {
             axios.get('/api/company')
                 .then(response => {
                     this.companies = response.data
+                    console.log(response.data);
                 })
         },
 
