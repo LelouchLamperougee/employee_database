@@ -31,7 +31,6 @@ class UpdateRequest extends FormRequest
             'post' => '',
             'work_experience' => '',
             'salary' => '',
-            'description' => '',
             'company_id' => ''
         ];
     }

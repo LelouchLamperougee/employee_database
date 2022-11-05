@@ -2,6 +2,8 @@
     <div class="wrapper">
         <div class="form-group row">
 
+            <span class="fields-warning-text">All fields must be filled!</span>
+
             <label for="inputEmail3" class="col-sm-2 col-form-label">First name</label>
             <div class="col-sm-10">
                 <input v-model="first_name" type="text" class="form-control" id="inputEmail3" placeholder="First name">
@@ -39,15 +41,11 @@
                 <input v-model="salary" type="email" class="form-control" id="inputEmail3" placeholder="Salary">
             </div>
 
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-10">
-                <input v-model="description" type="text" class="form-control" id="inputEmail3" placeholder="Description">
-            </div>
-
             <label for="inputEmail3" class="col-sm-2 col-form-label">Company</label>
             <div class="col-sm-10">
 
-                <select v-model="company_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <select v-model="company_id" class="form-select form-select-lg mb-3"
+                        aria-label=".form-select-lg example">
                     <option v-for="company in companies" :value="company.id">
                         {{ company.name }}
                     </option>
@@ -56,7 +54,9 @@
             </div>
 
             <div>
-                <button @click.prevent="createEmployee" class="btn btn-primary" type="submit">create</button>
+                <button :disabled="!isDisabled" @click.prevent="createEmployee" class="btn btn-primary" type="submit">
+                    create
+                </button>
             </div>
         </div>
     </div>
@@ -100,7 +100,6 @@ export default {
                 post: this.post,
                 work_experience: this.work_experience,
                 salary: this.salary,
-                description: this.description,
                 company_id: this.company_id
             })
                 .then(response => {
@@ -111,7 +110,6 @@ export default {
                     this.post = ""
                     this.work_experience = null
                     this.salary = null
-                    this.description = ""
                     this.company_id = null
                     router.push({name: 'employees.index'})
                 })
@@ -124,6 +122,12 @@ export default {
                     this.companies = response.data
                     console.log(response.data);
                 })
+        }
+    },
+
+    computed: {
+        isDisabled() {
+            return this.first_name && this.last_name && this.date_of_birth && this.passport && this.post && this.work_experience && this.salary && this.company_id;
         }
     }
 

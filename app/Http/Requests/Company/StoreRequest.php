@@ -24,9 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'budget' => 'required|integer',
-            'ceo' => 'required|string',
+            'name' => 'required|string|min:3|max:25',
+            'budget' => 'required|integer|between:1000,10000000000000',
+            'ceo' => 'required|string|min:3|max:35',
         ];
     }
 }

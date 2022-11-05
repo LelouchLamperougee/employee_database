@@ -1,6 +1,5 @@
 .wrapper input{
-    max-width: 16em;
-
+    max-width: 25em;
 }
 
 .wrapper button{
@@ -8,5 +7,11 @@
 }
 
 .wrapper select{
-    max-width: 13em;
+    max-width: 25em;
+}
+
+.fields-warning-text{
+    color: red;
+    font-size: 24px;
+    margin-bottom: 1.2em;
 }

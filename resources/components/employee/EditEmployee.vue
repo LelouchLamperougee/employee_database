@@ -17,7 +17,7 @@
         </td>
 
         <td><a href="#">
-            <button @click.prevent="updateEmployee(employee.id)" class="btn btn-success">update</button>
+            <button :disabled="!isDisabled" @click.prevent="updateEmployee(employee.id)" class="btn btn-success">update</button>
         </a></td>
 
         <td><a href="#">
@@ -51,8 +51,8 @@ export default {
         }
     },
 
-    methods:{
-        updateEmployee(id){
+    methods: {
+        updateEmployee(id) {
             this.$parent.editEmployeeId = null
             axios.patch(`/api/employee/${id}`, {
                 first_name: this.first_name,
@@ -69,11 +69,19 @@ export default {
         },
 
 
-        cancel(){
+        cancel() {
             this.$parent.editEmployeeId = null
         },
 
-    }
+    },
+
+        computed: {
+            isDisabled() {
+                return this.first_name && this.last_name && this.date_of_birth && this.passport && this.post && this.work_experience && this.salary && this.company_id;
+            }
+        }
+
+
 }
 </script>
 
