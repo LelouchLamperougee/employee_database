@@ -6,7 +6,7 @@
         <td><input v-model="ceo" type="text"></td>
 
         <td><a href="#">
-            <button @click.prevent="updateCompany(company.id)" class="btn btn-success">update</button>
+            <button :disabled="!isDisabled" @click.prevent="updateCompany(company.id)" class="btn btn-success">update</button>
         </a></td>
 
         <td><a href="#">
@@ -45,6 +45,12 @@ export default {
 
         cancel(){
             this.$parent.editCompanyId = null
+        }
+    },
+
+    computed: {
+        isDisabled() {
+            return this.name && this.budget && this.ceo;
         }
     }
 }

@@ -8,7 +8,7 @@
         <td>{{ employee.post }}</td>
         <td>{{ employee.work_experience }} year</td>
         <td>{{ employee.salary }}$</td>
-        <td>{{ employee.company_id }}</td>
+        <td>{{employee.company.name}}</td>
         <td class="text-center"><a href="#">
             <button @click.prevent="changeEditEmployeeId(employee.id, employee.first_name, employee.last_name, employee.date_of_birth, employee.passport, employee.post, employee.work_experience, employee.salary, employee.company_id)" class="btn btn-success">edit</button>
         </a></td>
