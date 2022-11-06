@@ -1,4 +1,4 @@
-# employee_database
+# employee database
 
 
 ## Стек технологий:
